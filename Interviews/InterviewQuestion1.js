@@ -16,17 +16,17 @@
 //! if arrays had same length it would be O(n^2). If there are two arrays of length a & b then it is O(a*b)
 //! O(a*b) expresses that you have two parameters that determine complexity. O(n^2) expresses that your complexity only depends on one parameter.
 
-// function containsCommmonItem(array1, array2) {
-//   for (let i = 0; i < array1.length; i++) {
-//     for (let j = 0; j < array2.length; j++) {
-//       if (array1[i] === array2[j]) {
-//         console.log(array1[i], array2[j]);
-//         return true;
-//       }
-//     }
-//   }
-//   return false;
-// }
+function containsCommmonItem(array1, array2) {
+  for (let i = 0; i < array1.length; i++) {
+    for (let j = 0; j < array2.length; j++) {
+      if (array1[i] === array2[j]) {
+        console.log(array1[i], array2[j]);
+        return true;
+      }
+    }
+  }
+  return false;
+}
 
 // O(a + b) Time Complexity
 // O(a) Space Complexity
