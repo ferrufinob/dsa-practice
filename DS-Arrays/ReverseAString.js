@@ -36,7 +36,7 @@ function reverse(str) {
   // convert into an array
   const backwards = [];
   const totalItems = str.length - 1;
-  for (let i = totalItems; (i = 0); i--) {
+  for (let i = totalItems; i >= 0; i--) {
     backwards.push(str[i]);
   }
 
@@ -52,4 +52,4 @@ function reverse02(str) {
 
 const reverse03 = (str) => [...str].reverse().join("");
 
-console.log(reverse03("Hi My name is Andrei"));
+console.log(reverse("Hi My name is Andrei"));
