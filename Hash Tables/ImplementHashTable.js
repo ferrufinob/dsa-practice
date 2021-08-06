@@ -4,6 +4,7 @@ class HashTable {
   }
 
   //   private property
+  // this hash function generates an index between 0 to whatever number the array size is from a key
   _hash(key) {
     let hash = 0;
     for (let i = 0; i < key.length; i++) {
@@ -15,6 +16,8 @@ class HashTable {
     return hash;
   }
 
+  // create array inside each bucket
+  // push the key-value pair into the array in the bucket.
   set(key, value) {
     //   where we are storing our information
     let address = this._hash(key);
@@ -26,11 +29,13 @@ class HashTable {
     return this.data;
   }
 
+  // lookup
+  // takes only O(1) time for finding bucket, plus looping though the array inside the bucket/
   get(key) {
     let address = this._hash(key);
     const currentBucket = this.data[address];
     if (currentBucket) {
-      for (let i = 0; currentBucket.length; i++) {
+      for (let i = 0; i < currentBucket.length; i++) {
         if (currentBucket[i][0] === key) {
           return currentBucket[i][1];
         }
