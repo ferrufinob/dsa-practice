@@ -42,7 +42,7 @@ class LinkedList {
   }
 
   prepend(value) {
-    // add at the begining of head
+    // add at the beginning of head
     const newNode = {
       value: value,
       next: null,
@@ -53,7 +53,50 @@ class LinkedList {
     return this;
   }
 
-  insert(index, value) {}
+  printList() {
+    const array = [];
+    let currentNode = this.head;
+    while (currentNode !== null) {
+      array.push(currentNode.value);
+      currentNode = currentNode.next;
+    }
+    return array;
+  }
+
+  insert(index, value) {
+    // check params
+
+    if (index >= this.length) {
+      return this.append(value);
+    }
+
+    if (index === 0) {
+      return this.prepend(value);
+    }
+
+    const newNode = {
+      value: value,
+      next: null,
+    };
+    const leader = this.traverseToIndex(index - 1);
+    const holdingPointer = leader.next;
+    leader.next = newNode;
+    newNode.next = holdingPointer;
+    this.length++;
+    return this.printList();
+  }
+
+  traverseToIndex(index) {
+    // check params
+    let counter = 0;
+    let currentNode = this.head;
+
+    while (counter !== index) {
+      currentNode = currentNode.next;
+      counter++;
+    }
+    return currentNode;
+  }
 }
 
 const myLinkedList = new LinkedList(10);
@@ -61,5 +104,6 @@ const myLinkedList = new LinkedList(10);
 myLinkedList.prepend(1);
 myLinkedList.append(5);
 myLinkedList.append(16);
-myLinkedList.insert(2, 99);
+myLinkedList.insert(0, 99);
+console.log(myLinkedList.printList());
 console.log(myLinkedList);
