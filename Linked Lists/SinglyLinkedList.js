@@ -105,6 +105,26 @@ class LinkedList {
     this.length--;
     return this.printList();
   }
+
+  reverse() {
+    if (!this.head.next) {
+      return this.head;
+    }
+    let first = this.head;
+    let second = first.next;
+    while (second) {
+      const temp = second.next;
+      second.next = first;
+      first = second;
+      second = temp;
+    }
+    //   let reversedList = [];
+    //   for (let i = this.printList().length - 1; i >= 0; i--) {
+    //     reversedList.push(this.printList()[i]);
+    //   }
+    //   return reversedList;
+    // }
+  }
 }
 
 const myLinkedList = new LinkedList(10);
@@ -115,5 +135,6 @@ myLinkedList.append(16);
 myLinkedList.insert(0, 99);
 console.log(myLinkedList.printList());
 
-console.log("remove", myLinkedList.remove(2));
-console.log(myLinkedList.printList());
+//console.log("remove", myLinkedList.remove(2));
+console.log(myLinkedList.reverse());
+//console.log(myLinkedList.printList());
